@@ -37,6 +37,13 @@
 	</section>
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
+		<!-- Conteneur des filtres -->
+		<div class="filters">
+			<button class="filter-btn active" data-category-id="0">Tous</button>
+			<button class="filter-btn" data-category-id="1">Objets</button>
+			<button class="filter-btn" data-category-id="2">Appartements</button>
+			<button class="filter-btn" data-category-id="3">Hôtels & restaurants</button>
+		</div>
 		<div class="gallery">
 			<!-- Les projets seront ajoutés ici dynamiquement -->
 		</div>
@@ -46,7 +53,7 @@
 		<p>Vous avez un projet ? Discutons-en !</p>
 		<form action="#" method="post">
 			<label for="name">Nom</label>
-			<input type="text" name="name" id="name">
+			<input type="text" autocomplete="Votre Nom" name="name" id="name">
 			<label for="email">Email</label>
 			<input type="email" name="email" id="email">
 			<label for="message">Message</label>

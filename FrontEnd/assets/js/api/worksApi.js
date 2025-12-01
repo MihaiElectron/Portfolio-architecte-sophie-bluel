@@ -8,7 +8,7 @@ import { fetchData } from './api.js';
 export async function getWorks() {
     console.log('2. worksApi.js - Appel de getWorks()');
     const data = await fetchData('/works');
-    console.log('3. worksApi.js - Données récupérées', data);
+    console.log('4. worksApi.js - Données récupérées', data);
     return data;
 }
 

@@ -23,14 +23,14 @@ function createWorkElement(work) {
 /**
  * Affiche les projets dans la galerie
  * @param {Array} works - Tableau des projets à afficher
- * @param {HTMLElement} galleryContainer - L'élément DOM conteneur (ex: document.querySelector('.gallery'))
+ * @param {HTMLElement} galleryContainer - L'élément DOM conteneur : document.querySelector('.gallery')
  */
 export function displayWorks(works, galleryContainer) {
     // Vide la galerie
     galleryContainer.innerHTML = '';
     
     // Ajoute chaque projet
-    console.log('5. gallery.js - Affichage en cours');
+    console.log('6. gallery.js - Affichage en cours');
     works.forEach(work => {
         const workElement = createWorkElement(work);
         galleryContainer.appendChild(workElement);

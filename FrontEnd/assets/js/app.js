@@ -1,7 +1,8 @@
 // # Point d'entrée principal //
 
 import { getWorks, getCategories } from './api/worksApi.js';
-import { displayWorks } from './components/gallery.js';
+import { displayWorks, filterWorksByCategory } from './components/gallery.js';
+import { selectedFilter } from './components/filters.js';
 
 /**
  * Initialise l'application
@@ -22,12 +23,17 @@ async function init() {
         
         // Récupère les données depuis l'API
         const works = await getWorks();
-        console.log('4. app.js - Données reçues', works);
+        console.log('5. app.js - Données reçues', works);
         
         // Affiche les projets dans la galerie
         displayWorks(works, galleryContainer);
-        console.log('6. app.js - Affichage terminé');
-        
+        console.log('7. app.js - Affichage terminé');
+
+        // Configure les filtres **après avoir les données**
+        selectedFilter((categoryId) => {
+            filterWorksByCategory(works, parseInt(categoryId), galleryContainer);
+        });
+
         console.log('Projets chargés avec succès:', works.length);
         
     } catch (error) {
@@ -40,5 +46,7 @@ async function init() {
     }
 }
 
+
 // Lance l'application quand le DOM est prêt
 init();
+
