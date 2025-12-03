@@ -243,3 +243,13 @@ footer nav ul {
 	margin: 2em
 }
 
+#login .error-message {
+    color: red;
+    background-color: #ffe6e6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+

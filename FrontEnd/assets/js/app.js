@@ -1,9 +1,13 @@
 import { getWorks, getCategories } from './api/worksApi.js';
 import { displayWorks, filterWorksByCategory } from './components/gallery.js';
 import { createFilters, handleFilterClick } from './components/filters.js';
+import { updateNavigation } from './components/auth.js';
 
 async function init() {
     console.log('1. app.js - Début de init()');
+
+     // Met à jour le menu de navigation
+     updateNavigation();
     
     try {
         const galleryContainer = document.querySelector('.gallery');
