@@ -1,39 +1,39 @@
-// # Point d'entrée principal //
-
 import { getWorks, getCategories } from './api/worksApi.js';
 import { displayWorks, filterWorksByCategory } from './components/gallery.js';
-import { selectedFilter } from './components/filters.js';
+import { createFilters, handleFilterClick } from './components/filters.js';
 
-/**
- * Initialise l'application
- */
 async function init() {
     console.log('1. app.js - Début de init()');
+    
     try {
-        // Récupère le conteneur de la galerie
         const galleryContainer = document.querySelector('.gallery');
+        const filtersContainer = document.querySelector('.filters');
         
-        if (!galleryContainer) {
-            console.error('Conteneur .gallery introuvable');
+        if (!galleryContainer || !filtersContainer) {
+            console.error('Conteneurs introuvables');
             return;
         }
         
-        // Affiche un message de chargement
         galleryContainer.innerHTML = '<p>Chargement des projets...</p>';
         
-        // Récupère les données depuis l'API
-        const works = await getWorks();
-        console.log('5. app.js - Données reçues', works);
+        const [works, categories] = await Promise.all([
+            getWorks(),
+            getCategories()
+        ]);
         
-        // Affiche les projets dans la galerie
+        console.log('5. app.js - Données reçues', works, categories);
+        
         displayWorks(works, galleryContainer);
         console.log('7. app.js - Affichage terminé');
-
-        // Configure les filtres **après avoir les données**
-        selectedFilter((categoryId) => {
-            filterWorksByCategory(works, parseInt(categoryId), galleryContainer);
+        
+        // Crée les filtres
+        createFilters(categories, filtersContainer);
+        
+        // Gère les clics
+        handleFilterClick(filtersContainer, (categoryId) => {
+            filterWorksByCategory(works, categoryId, galleryContainer);
         });
-
+        
         console.log('Projets chargés avec succès:', works.length);
         
     } catch (error) {
@@ -46,7 +46,4 @@ async function init() {
     }
 }
 
-
-// Lance l'application quand le DOM est prêt
 init();
-

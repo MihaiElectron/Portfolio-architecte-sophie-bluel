@@ -8,7 +8,7 @@ import { fetchData } from './api.js';
 export async function getWorks() {
     console.log('2. worksApi.js - Appel de getWorks()');
     const data = await fetchData('/works');
-    console.log('4. worksApi.js - Données récupérées', data);
+    console.log('4. worksApi.js - Données getWorks récupérées', data);
     return data;
 }
 
@@ -16,8 +16,8 @@ export async function getWorks() {
  * Récupère toutes les catégories
  */
 export async function getCategories() {
-    console.log(' worksApi.js - Appel de getCategories()');
+    console.log('2 worksApi.js - Appel de getCategories()');
     const data = await fetchData('/categories');
-    console.log(' worksApi.js - Données récupérées', data);
+    console.log('4 worksApi.js - Données getCategories récupérées', data);
     return data;
 }
