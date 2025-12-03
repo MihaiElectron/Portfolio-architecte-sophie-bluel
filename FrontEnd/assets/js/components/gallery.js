@@ -5,6 +5,7 @@
  */
 function createWorkElement(work) {
     const figure = document.createElement('figure');
+    figure.dataset.workId = work.id;
     figure.dataset.categoryId = work.categoryId;
     
     const img = document.createElement('img');

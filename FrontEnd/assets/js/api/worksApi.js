@@ -1,23 +1,50 @@
-// # Appels API spécifiques (GET, POST, DELETE) //
+// assets/js/api/worksApi.js
 
-import { fetchData } from './api.js';
+import { fetchData, API_URL } from './api.js';
+import { getAuthToken } from './authApi.js';
 
 /**
- * Récupère tous les projets (works)
+ * Récupère tous les projets
  */
 export async function getWorks() {
     console.log('2. worksApi.js - Appel de getWorks()');
-    const data = await fetchData('/works');
-    console.log('4. worksApi.js - Données getWorks récupérées', data);
-    return data;
+    return fetchData('/works');
 }
 
 /**
  * Récupère toutes les catégories
  */
 export async function getCategories() {
-    console.log('2 worksApi.js - Appel de getCategories()');
-    const data = await fetchData('/categories');
-    console.log('4 worksApi.js - Données getCategories récupérées', data);
-    return data;
+    return fetchData('/categories');
+}
+
+/**
+ * Supprime un projet (nécessite authentification)
+ * @param {number} workId - ID du projet à supprimer
+ */
+export async function deleteWork(workId) {
+    const token = getAuthToken();
+    
+    if (!token) {
+        throw new Error('Vous devez être connecté pour supprimer un projet');
+    }
+    
+    try {
+        const response = await fetch(`${API_URL}/works/${workId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP: ${response.status}`);
+        }
+        
+        return { success: true };
+        
+    } catch (error) {
+        console.error('Erreur lors de la suppression:', error);
+        throw error;
+    }
 }
