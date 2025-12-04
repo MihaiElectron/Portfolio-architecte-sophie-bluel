@@ -45,7 +45,7 @@ async function init() {
             addEditButton(portfolioSection);
             
             // Initialise la modale
-            initModal(works);
+            initModal(works, categories);
             
         } else {
             // Mode visiteur : filtres visibles

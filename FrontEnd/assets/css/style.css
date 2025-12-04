@@ -308,9 +308,12 @@ footer nav ul {
 }
 
 .modal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
     position: relative;
     background: white;
-    padding: 40px;
     border-radius: 10px;
     max-width: 600px;
     width: 90%;
@@ -324,31 +327,69 @@ footer nav ul {
     right: 20px;
     background: none;
     border: none;
-    font-size: 24px;
+    font-size: 12px;
     cursor: pointer;
     color: #000;
 }
-
 .modal-close:hover {
     color: #1D6154;
 }
 
-.modal h3 {
+.modal-back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 21px;
+    cursor: pointer;
+    color: #000;
+}
+.modal-back:hover {
+    color: #1D6154;
+}
+
+.modal-title {
     text-align: center;
+	font-weight: 400;
+	font-size: 26px;
+	margin-top: 60px;
     margin-bottom: 40px;
     color: #000;
 }
 
 /* Galerie de la modale */
-.modal-gallery {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
+.modal-gallery-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0 100px 0 100px;
 }
+.modal-gallery {
+	width: 100%;   
+	height: 200px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	display: grid;
+    grid-template-columns: repeat(5, 1fr);	
+    gap: 9px;
+	  /* cacher la scrollbar */
+	scrollbar-width: none;      /* Firefox */
+	-ms-overflow-style: none;   /* IE 10+ */
+}
+
+.modal-gallery img {
+
+	user-select: none;       /* empêche la sélection au drag */
+	-webkit-user-drag: none; /* empêche le drag natif sur Chrome/Safari */
+  }
+  
 
 .modal-work {
     position: relative;
     margin: 0;
+	max-width: 77px;
+	max-height: 102px;
 }
 
 .modal-work img {
@@ -364,16 +405,45 @@ footer nav ul {
     background: #000;
     color: white;
     border: none;
-    width: 24px;
-    height: 24px;
+    width: 17px;
+    height: 17px;
     border-radius: 2px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 11px;
+	border-radius: 2px;
+}
+
+.separator {
+	width: 100%;
+    height: 1px;
+    background-color: #B3B3B3;
+	margin-top: 67px;
+}
+
+.modal-picsadd-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 38px;
+	border: solid 1px #1D6154;
+	border-radius: 60px;
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 17px;	
+	background-color: #1D6154;
+	color: white;
+	padding: 10px 49px;
+	margin: 30px 90px 45px 90px;
 }
 
 .delete-work-btn:hover {
     background: #B1663C;
 }
+
+.modal-view {
+    width: 100%;
+}
+
