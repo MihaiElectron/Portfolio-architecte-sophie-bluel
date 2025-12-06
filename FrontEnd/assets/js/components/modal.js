@@ -3,13 +3,14 @@
 import { deleteWork } from '../api/worksApi.js';
 
 let modalWorks = [];
+let modalCategories = [];
 
 /**
  * Initialise la modale
- * @param {Array} works - Liste des projets
  */
-export function initModal(works) {
+export function initModal(works, categories) {
     modalWorks = works;
+    modalCategories = categories;
     createModalHTML();
     setupModalEvents();
 }
@@ -26,7 +27,7 @@ function createModalHTML() {
                 </button>
                 <div class="modal-gallery-container">
                     <h3 class="modal-title">Galerie photo</h3>
-                    <div class="modal-gallery"> </div>               
+                    <div class="modal-gallery"></div>               
                     <hr class="separator">
                 </div>
                 <button class="modal-picsadd-btn">Ajouter une photo</button>
@@ -44,17 +45,18 @@ function setupModalEvents() {
     const overlay = document.getElementById('modal-overlay');
     const closeBtn = document.querySelector('.modal-close');
     const modal = document.querySelector('.modal');
-    const gallery = document.querySelector('.modal-gallery');
+    const gallery = document.querySelector('.modal-gallery'); // ← Récupérez la galerie
 
-    // --- Fonction de fermeture ---
-    function closeModal() {
-        overlay.style.display = 'none';
-    }
+    // Bloque tous les drags
+    gallery.addEventListener('dragstart', (e) => {
+        e.preventDefault();
+        return false;
+    }, true); // ← true = capture phase
 
     // Ferme au clic sur l'overlay
     overlay.addEventListener('click', (event) => {
         if (event.target === overlay) {
-            closeModal();
+            closeModal(); // ← Appelle la fonction définie plus bas
         }
     });
 
@@ -65,44 +67,8 @@ function setupModalEvents() {
     modal.addEventListener('click', (event) => {
         event.stopPropagation();
     });
-
-    // --- Drag-to-scroll Desktop ---
-    let isDown = false;
-    let startY;
-    let scrollTop;
-
-    gallery.addEventListener('mousedown', (e) => {
-        isDown = true;
-        startY = e.pageY - gallery.offsetTop;
-        scrollTop = gallery.scrollTop;
-    });
-
-    gallery.addEventListener('mouseleave', () => isDown = false);
-    gallery.addEventListener('mouseup', () => isDown = false);
-
-    gallery.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const y = e.pageY - gallery.offsetTop;
-        const walk = y - startY;
-        gallery.scrollTop = scrollTop - walk;
-    });
-
-    // --- Drag-to-scroll Mobile / Tactile ---
-    let startTouchY;
-    let scrollTopTouch;
-
-    gallery.addEventListener('touchstart', (e) => {
-        startTouchY = e.touches[0].clientY;
-        scrollTopTouch = gallery.scrollTop;
-    });
-
-    gallery.addEventListener('touchmove', (e) => {
-        const y = e.touches[0].clientY;
-        const walk = y - startTouchY;
-        gallery.scrollTop = scrollTopTouch - walk;
-    });
 }
+
 /**
  * Ouvre la modale
  */
@@ -111,7 +77,6 @@ export function openModal() {
     overlay.classList.add('active');
     displayModalWorks();
 }
-
 
 /**
  * Ferme la modale
@@ -136,7 +101,7 @@ function displayModalWorks() {
         const img = document.createElement('img');
         img.src = work.imageUrl;
         img.alt = work.title;
-        img.draggable = false; // <-- empêche le drag natif des images
+
         
         const deleteBtn = document.createElement('button');
         deleteBtn.className = 'delete-work-btn';
@@ -151,7 +116,6 @@ function displayModalWorks() {
 
 /**
  * Gère la suppression d'un projet
- * @param {number} workId - ID du projet à supprimer
  */
 async function handleDeleteWork(workId) {
     if (!confirm('Voulez-vous vraiment supprimer ce projet ?')) {
@@ -161,13 +125,9 @@ async function handleDeleteWork(workId) {
     try {
         await deleteWork(workId);
         
-        // Retire le projet de la liste
         modalWorks = modalWorks.filter(work => work.id !== workId);
-        
-        // Met à jour l'affichage de la modale
         displayModalWorks();
         
-        // Met à jour la galerie principale
         const figure = document.querySelector(`.gallery figure[data-work-id="${workId}"]`);
         if (figure) {
             figure.remove();
