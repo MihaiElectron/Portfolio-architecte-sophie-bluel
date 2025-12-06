@@ -193,7 +193,6 @@ nav li {
 
 }
 
-
 #contact,
 #login  {
 	width: 50%;
@@ -259,11 +258,6 @@ footer nav ul {
     text-align: center;
 }
 
-
-
-
-
-
 /* Header titre avec bouton modifier */
 .portfolio-header {
     display: flex;
@@ -290,6 +284,7 @@ footer nav ul {
 }
 
 /* Modale */
+
 .modal-overlay {
     display: none;
     position: fixed;
@@ -315,9 +310,17 @@ footer nav ul {
     position: relative;
     background: white;
     border-radius: 10px;
-    max-width: 600px;
+    max-width: 630px;
     width: 90%;
     max-height: 80vh;
+}
+
+.modal-gallery-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 100px 0 100px;
 }
 
 .modal-close {
@@ -335,21 +338,6 @@ footer nav ul {
     color: #1D6154;
 }
 
-.modal-back {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: none;
-    border: none;
-    font-size: 21px;
-    cursor: pointer;
-    color: #000;
-}
-
-.modal-back:hover {
-    color: #1D6154;
-}
-
 .modal-title {
     text-align: center;
     font-weight: 400;
@@ -360,20 +348,14 @@ footer nav ul {
 }
 
 /* Galerie de la modale */
-.modal-gallery-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 100px 0 100px;
-}
 
 .modal-gallery {
     width: 100%;   
-    height: 200px;
+    height: 364px;
     overflow-y: auto;
     display: grid;
     grid-template-columns: repeat(5, 1fr);  
-    gap: 9px;
+    gap: 29px 9px;
     
     /* Scroll natif optimisé */
     -webkit-overflow-scrolling: touch;
@@ -434,31 +416,210 @@ footer nav ul {
     width: 100%;
     height: 1px;
     background-color: #B3B3B3;
+    margin: 0;
     margin-top: 67px;
 }
 
-.modal-picsadd-btn {
+.modal-add-photo-btn {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 38px;
+    width: 237px;
     border: solid 1px #1D6154;
     border-radius: 60px;
     font-family: 'Syne';
     font-weight: 700;
     font-size: 17px;    
     background-color: #1D6154;
-    color: white;
-    padding: 10px 49px;
-    margin: 30px 90px 45px 90px;
+    color: white;  
     cursor: pointer;
+    margin: 38px auto 46px auto;
 }
 
-.modal-picsadd-btn:hover {
+.modal-add-photo-btn:hover {
     background-color: #145644;
 }
 
-.modal-view {
-    width: 100%;
+/* Modale Ajout photo */
+.modal-back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 21px;
+    cursor: pointer;
+    color: #000;
 }
 
+.modal-back:hover {
+    color: #1D6154;
+}
+
+.modal-add-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 420px;
+    padding: 0 105px 0 105px;
+}
+
+.add-work-form {    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-upload {
+    width: 420px;
+    height: 169px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #E8F1F6;
+    position: relative;
+    overflow: hidden;
+}
+.upload-icon {
+    font-size: 76px;
+    color: #CBD6DC;
+}
+
+.photo-label {
+    display: inline-flex;           /* permet de centrer le texte */
+    align-items: center;
+    justify-content: center;
+    width: 173px;
+    height: 36px;
+    border-radius: 50px;
+    background-color: #CBD6DC;
+    color: #306685;
+    font-family: 'Syne', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 36px;
+}
+
+.photo-info {
+    font-weight: 400;
+    font-size: 10px;
+    color: #444444;
+}
+
+.photo-preview {
+    width: 100%;
+    height: 169px;
+    object-fit: contain;
+    background-color: #E8F1F6;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: "Work Sans", sans-serif;
+    color: #3D3D3D;
+    width: 100%;
+    gap: 21px;
+    padding-top: 30px;
+}
+
+.form-field {
+    width: 100%;
+    height: 51px;
+    border: none;
+    background-color: white;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.form-add-separator {
+    width: 100%;
+    height: 1px;
+    background-color: #B3B3B3;
+    margin: 0;
+    margin: 47px 0 32px 0;
+}
+
+/* Bouton valider - États */
+.modal-validate-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    width: 237px;
+    border: solid 1px;
+    border-radius: 60px;
+    font-family: 'Syne';
+    font-weight: 700;
+    font-size: 17px;    
+    background-color: #A7A7A7;
+    border-color: #A7A7A7;
+    color: white;  
+    cursor: pointer;
+    margin-bottom: 55px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    cursor: default;
+}
+
+
+
+.modal-validate-btn:disabled {
+    cursor: not-allowed;
+}
+
+/* Message de succès */
+.success-message {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    transition: opacity 0.3s ease;
+}
+
+.success-message i {
+    font-size: 20px;
+    color: #28a745;
+}
+
+.success-message p {
+    margin: 0;
+}
+
+/* Message de suppression */
+.delete-message {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    transition: opacity 0.3s ease;
+}
+
+.delete-message i {
+    font-size: 20px;
+    color: #dc3545;
+}
+
+.delete-message p {
+    margin: 0;
+}

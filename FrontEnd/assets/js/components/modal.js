@@ -22,7 +22,7 @@ export function initModal(works, categories) {
 function createModalHTML() {
     const modalHTML = `
         <div id="modal-overlay" class="modal-overlay">
-            <div class="modal">
+            <div class="modal modal">
                 <button class="modal-back" style="display: none;">
                     <i class="fa-solid fa-arrow-left"></i>
                 </button>
