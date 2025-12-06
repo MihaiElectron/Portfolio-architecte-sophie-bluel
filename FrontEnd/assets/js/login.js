@@ -54,3 +54,9 @@ function initLoginForm() {
 
 // Lance l'initialisation
 initLoginForm();
+
+    // Bloque tous les drags
+    gallery.addEventListener('dragstart', (e) => {
+        e.preventDefault();
+        return false;
+    }, true); // ← true = capture phase

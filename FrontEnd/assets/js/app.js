@@ -9,6 +9,8 @@ import { initModal, openModal } from './components/modal.js';
 
 async function init() {
     console.log('1. app.js - Début de init()');
+   
+    
     
     updateNavigation();
     

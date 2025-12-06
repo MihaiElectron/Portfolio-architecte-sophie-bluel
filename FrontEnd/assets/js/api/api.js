@@ -37,3 +37,5 @@ export async function fetchData(endpoint) {
     console.error() → on peut logger ou afficher l’erreur pour le dev
 
     throw error → on “relance” l’erreur pour que la fonction appelante puisse aussi la gérer */
+
+    

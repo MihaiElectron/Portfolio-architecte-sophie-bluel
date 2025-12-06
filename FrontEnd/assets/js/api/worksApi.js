@@ -48,3 +48,36 @@ export async function deleteWork(workId) {
         throw error;
     }
 }
+
+/**
+ * Ajoute un nouveau projet (nécessite authentification)
+ * @param {FormData} formData - Données du formulaire (image, title, category)
+ */
+export async function createWork(formData) {
+    const token = getAuthToken();
+    
+    if (!token) {
+        throw new Error('Vous devez être connecté pour ajouter un projet');
+    }
+    
+    try {
+        const response = await fetch(`${API_URL}/works`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`
+                // ⚠️ Pas de Content-Type pour FormData !
+            },
+            body: formData
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP: ${response.status}`);
+        }
+        
+        return await response.json();
+        
+    } catch (error) {
+        console.error('Erreur API création work', error);
+        throw error;
+    }
+}
