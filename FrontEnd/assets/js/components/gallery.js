@@ -1,4 +1,4 @@
-// # Appels API spécifiques (GET, POST, DELETE) //
+// # Fonctions utilitaires pour la galerie (création, affichage, filtrage)
 
 /**
  * Crée un élément figure pour un projet
@@ -29,13 +29,19 @@ function createWorkElement(work) {
 export function displayWorks(works, galleryContainer) {
     // Vide la galerie
     galleryContainer.innerHTML = '';
-    
-    // Ajoute chaque projet
+
     console.log('6. gallery.js - Affichage en cours');
+
+    // Utilisation d'un fragment pour limiter les reflows
+    const fragment = document.createDocumentFragment();
+
     works.forEach(work => {
         const workElement = createWorkElement(work);
-        galleryContainer.appendChild(workElement);
+        fragment.appendChild(workElement);
     });
+
+    // Injection en une seule opération
+    galleryContainer.appendChild(fragment);
 }
 
 /**
@@ -45,7 +51,5 @@ export function filterWorksByCategory(works, categoryId, galleryContainer) {
     const filteredWorks = categoryId === 0 
         ? works 
         : works.filter(work => work.categoryId === categoryId);
-        /*  opérateur ternaire (ou conditionnel ternaire)
-            condition ? valeurSiVrai : valeurSiFaux */
     displayWorks(filteredWorks, galleryContainer);
 }

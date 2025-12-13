@@ -3,7 +3,7 @@
 import { getWorks, getCategories } from './api/worksApi.js';
 import { displayWorks, filterWorksByCategory } from './components/gallery.js';
 import { createFilters, handleFilterClick } from './components/filters.js';
-import { updateNavigation } from './components/auth.js';
+import { updateNavigation, showEditModeBanner } from './components/auth.js';
 import { isLoggedIn } from './api/authApi.js';
 import { initModal, openModal } from './components/modal.js';
 
@@ -36,6 +36,8 @@ async function init() {
         
         // Gestion en mode connecté ou non
         if (isLoggedIn()) {
+            // Affiche la banniere mode edit
+            showEditModeBanner();
             // Mode admin : pas de filtres, bouton modifier
             if (filtersContainer) {
                 filtersContainer.style.display = 'none';
@@ -73,19 +75,6 @@ async function init() {
     }
 }
 
-/**
- * Affiche la bannière mode édition
- */
-function showEditModeBanner() {
-    const banner = document.createElement('div');
-    banner.className = 'edit-mode-banner';
-    banner.innerHTML = `
-        <i class="fa-regular fa-pen-to-square"></i>
-        <span>Mode édition</span>
-    `;
-    
-    document.body.insertBefore(banner, document.body.firstChild);
-}
 
 /**
  * Ajoute le bouton "modifier" à côté du titre

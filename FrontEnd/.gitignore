@@ -1,0 +1,21 @@
+# Dépendances Node
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Variables d'environnement
+.env
+
+# Fichiers de build (si présents)
+dist/
+build/
+
+# Cache ESLint
+.eslintcache

@@ -30,3 +30,17 @@ export function updateNavigation() {
     }
 }
 
+/**
+ * Affiche la bannière mode édition
+ */
+export function showEditModeBanner() {
+    const banner = document.createElement('div');
+    banner.className = 'edit-mode-banner';
+    banner.innerHTML = `
+        <i class="fa-regular fa-pen-to-square"></i>
+        <span>Mode édition</span>
+    `;
+    
+    document.body.insertBefore(banner, document.body.firstChild);
+}
+
