@@ -29,3 +29,4 @@ export function updateNavigation() {
         loginLink.href = 'login.html';
     }
 }
+

@@ -8,9 +8,7 @@ import { isLoggedIn } from './api/authApi.js';
 import { initModal, openModal } from './components/modal.js';
 
 async function init() {
-    console.log('1. app.js - Début de init()');
-   
-    
+    console.log('1. app.js - Début de init()');    
     
     updateNavigation();
     
@@ -42,6 +40,9 @@ async function init() {
             if (filtersContainer) {
                 filtersContainer.style.display = 'none';
             }
+
+            // Affiche la bannière mode édition
+            showEditModeBanner();
             
             // Ajoute le bouton "modifier"
             addEditButton(portfolioSection);
@@ -70,6 +71,20 @@ async function init() {
             galleryContainer.innerHTML = '<p>Erreur lors du chargement des projets.</p>';
         }
     }
+}
+
+/**
+ * Affiche la bannière mode édition
+ */
+function showEditModeBanner() {
+    const banner = document.createElement('div');
+    banner.className = 'edit-mode-banner';
+    banner.innerHTML = `
+        <i class="fa-regular fa-pen-to-square"></i>
+        <span>Mode édition</span>
+    `;
+    
+    document.body.insertBefore(banner, document.body.firstChild);
 }
 
 /**

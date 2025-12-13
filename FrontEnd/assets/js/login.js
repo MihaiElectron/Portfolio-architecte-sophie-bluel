@@ -36,7 +36,7 @@ async function handleLoginSubmit(event) {
         const form = document.querySelector('#login form');
         form.insertBefore(errorMessage, form.firstChild);
     }
-}
+}   
 
 /**
  * Initialise le formulaire de connexion
@@ -54,9 +54,3 @@ function initLoginForm() {
 
 // Lance l'initialisation
 initLoginForm();
-
-    // Bloque tous les drags
-    gallery.addEventListener('dragstart', (e) => {
-        e.preventDefault();
-        return false;
-    }, true); // ← true = capture phase
