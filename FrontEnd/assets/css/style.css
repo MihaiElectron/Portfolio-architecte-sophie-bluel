@@ -57,6 +57,7 @@ body {
 	font-size: 14px;
 	display: flex;
 	flex-direction: column;
+    padding: 0 20px;
 }
 main {
 	flex: 1;
@@ -446,10 +447,11 @@ body:has(.edit-mode-banner) {
 
 .separator {
     width: 100%;
-    height: 1px;
+    height: 2px;
     background-color: #B3B3B3;
     margin: 0;
     margin-top: 67px;
+    border: none;
 }
 
 .modal-add-photo-btn {
@@ -573,12 +575,14 @@ body:has(.edit-mode-banner) {
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
+
 .form-add-separator {
     width: 100%;
-    height: 1px;
+    height: 2px;
     background-color: #B3B3B3;
     margin: 0;
     margin: 47px 0 32px 0;
+    border: none;
 }
 
 /* Bouton valider - États */
@@ -612,6 +616,8 @@ body:has(.edit-mode-banner) {
 .success-message {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: auto;
     gap: 10px;
     background-color: #d4edda;
     color: #155724;
@@ -621,6 +627,7 @@ body:has(.edit-mode-banner) {
     font-family: 'Work Sans', sans-serif;
     font-size: 14px;
     transition: opacity 0.3s ease;
+    margin: 20px auto
 }
 
 .success-message i {
@@ -636,6 +643,8 @@ body:has(.edit-mode-banner) {
 .delete-message {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: auto;
     gap: 10px;
     background-color: #f8d7da;
     color: #721c24;
@@ -645,6 +654,7 @@ body:has(.edit-mode-banner) {
     font-family: 'Work Sans', sans-serif;
     font-size: 14px;
     transition: opacity 0.3s ease;
+    margin: 20px auto
 }
 
 .delete-message i {
@@ -654,4 +664,344 @@ body:has(.edit-mode-banner) {
 
 .delete-message p {
     margin: 0;
+}
+
+
+/* ==================== RESPONSIVE MOBILE ==================== */
+
+@media (max-width: 768px) {
+    
+    /* Body et conteneur principal */
+    body {
+        margin: 0;
+        padding: 0 20px;
+    }
+    
+    body:has(.edit-mode-banner) {
+        padding-top: 59px;
+    }
+    
+    /* Header */
+    header {
+        flex-direction: column;
+        align-items: center;
+        margin: 30px 0;
+        text-align: center;
+    }
+    
+    h1 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    nav {
+        width: 100%;
+    }
+    
+    .menu {
+        flex-direction: column;
+        gap: 15px;
+        padding: 0;
+    }
+    
+    nav li {
+        padding: 5px 0;
+        font-size: 1em;
+    }
+    
+    /* Introduction */
+    #introduction {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    #introduction figure,
+    #introduction article {
+        flex: none;
+        width: 100%;
+    }
+    
+    #introduction img {
+        width: 100%;
+    }
+    
+    /* Portfolio */
+    #portfolio h2 {
+        font-size: 24px;
+    }
+    
+    .portfolio-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+    
+    .edit-btn {
+        font-size: 12px;
+    }
+    
+    /* Filtres */
+    .filters {
+        flex-wrap: wrap;
+        padding: 15px 0 30px 0;
+    }
+    
+    .filter-btn {
+        font-size: 14px;
+        height: 35px;
+        min-width: 80px;
+    }
+    
+    .filter-btn:nth-child(1),
+    .filter-btn:nth-child(2),
+    .filter-btn:nth-child(3),
+    .filter-btn:nth-child(4) {
+        width: auto;
+        padding: 0 20px;
+    }
+    
+    /* Galerie */
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    /* Contact et Login */
+    #contact,
+    #login {
+        width: 100%;
+    }
+    
+    /* Footer */
+    footer nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 1em;
+        gap: 10px;
+    }
+    
+    /* ==================== MODALE RESPONSIVE ==================== */
+    
+    .modal {
+        width: 95%;
+        max-height: 90vh;
+        padding: 20px;
+    }
+    
+    /* Vue Galerie */
+    .modal-gallery-view {
+        padding: 0 20px;
+        width: 100%;
+    }
+    
+    .modal-title {
+        font-size: 22px;
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+    
+    .modal-gallery {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px 8px;
+        height: 250px;
+    }
+    
+    .modal-work {
+        max-width: 100%;
+    }
+    
+    .modal-work img {
+        height: 102px;
+    }
+    
+    .separator {
+        margin-top: 40px;
+    }
+    
+    .modal-add-photo-btn {
+        width: 90%;
+        max-width: 237px;
+        height: 36px;
+        font-size: 15px;
+        margin: 30px auto 35px auto;
+    }
+    
+    /* Vue Ajout Photo */
+    .modal-add-view {
+        width: 100%;
+        padding: 0 20px;
+    }
+    
+    .add-work-form {
+        width: 100%;
+    }
+    
+    .photo-upload {
+        width: 100%;
+        max-width: 420px;
+        height: 150px;
+    }
+    
+    .upload-icon {
+        font-size: 60px;
+    }
+    
+    .photo-label {
+        width: 150px;
+        height: 32px;
+        font-size: 12px;
+    }
+    
+    .photo-info {
+        font-size: 9px;
+    }
+    
+    .photo-preview {
+        height: 150px;
+    }
+    
+    .form-group {
+        gap: 15px;
+        padding-top: 20px;
+    }
+    
+    .form-field {
+        height: 45px;
+        font-size: 14px;
+    }
+    
+    .form-add-separator {
+        margin: 30px 0 25px 0;
+    }
+    
+    .modal-validate-btn {
+        width: 90%;
+        max-width: 237px;
+        height: 36px;
+        font-size: 15px;
+        margin-bottom: 40px;
+    }
+    
+    /* Boutons modale */
+    .modal-close,
+    .modal-back {
+        font-size: 18px;
+        top: 15px;
+    }
+    
+    .modal-close {
+        right: 15px;
+    }
+    
+    .modal-back {
+        left: 15px;
+    }
+    
+    /* Messages */
+    .success-message,
+    .delete-message {
+        padding: 10px 15px;
+        margin: 15px 0;
+        font-size: 12px;
+    }
+    
+    .success-message i,
+    .delete-message i {
+        font-size: 16px;
+    }
+}
+
+/* ==================== RESPONSIVE PETITS MOBILES ==================== */
+
+@media (max-width: 480px) {
+    
+    body {
+        padding: 0 15px;
+    }
+    
+    h1 {
+        font-size: 16px;
+    }
+    
+    h2 {
+        font-size: 24px;
+    }
+    
+    /* Galerie modale encore plus compacte */
+    .modal-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px 6px;
+    }
+    
+    .modal-work img {
+        height: 90px;
+    }
+    
+    /* Formulaire ajout */
+    .photo-upload {
+        height: 130px;
+    }
+    
+    .upload-icon {
+        font-size: 50px;
+    }
+    
+    .photo-label {
+        width: 130px;
+        height: 30px;
+        font-size: 11px;
+    }
+    
+    .photo-preview {
+        height: 130px;
+    }
+    
+    .modal-title {
+        font-size: 20px;
+        margin-top: 30px;
+        margin-bottom: 25px;
+    }
+    
+    .form-group {
+        gap: 12px;
+        font-size: 13px;
+    }
+    
+    .form-field {
+        height: 40px;
+        font-size: 13px;
+    }
+    
+    .modal-add-photo-btn,
+    .modal-validate-btn {
+        width: 100%;
+        font-size: 14px;
+    }
+}
+
+/* ==================== RESPONSIVE TABLETTE ==================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    
+    body {
+        max-width: 900px;
+        padding: 0 40px;
+    }
+    
+    /* Galerie 2 colonnes sur tablette */
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    
+    /* Modale galerie 4 colonnes sur tablette */
+    .modal-gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    #contact,
+    #login {
+        width: 70%;
+    }
 }
