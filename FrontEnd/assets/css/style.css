@@ -118,6 +118,18 @@ nav li {
     color: #B1663C;
 }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -438,7 +450,6 @@ body:has(.edit-mode-banner) {
     align-items: center;
     justify-content: center;
     font-size: 11px;
-    pointer-events: auto;
 }
 
 .delete-work-btn:hover {
@@ -598,7 +609,6 @@ body:has(.edit-mode-banner) {
     font-weight: 700;
     font-size: 17px;    
     background-color: #A7A7A7;
-    border-color: #A7A7A7;
     color: white;  
     cursor: pointer;
     margin-bottom: 55px;
