@@ -58,7 +58,7 @@ L'objectif était de transformer une page statique en site dynamique en JavaScri
 
 ## Aperçu
 
-![Sophie Bluel](./assets/sophie-bluel-ss.png)
+![Sophie Bluel](.FrontEnd/assets/images/sophie-bluel-ss.png)
 
 Portfolio dynamique d'architecte d'intérieur avec galerie alimentée par API, filtres interactifs, espace administrateur sécurisé et modale de gestion des projets.
 
